@@ -30,6 +30,8 @@ export const VISITED_REGIONS: Record<string, boolean> = {
   'RU-KRY': true, // Республика Крым (UA-43)
   'RU-VLA': true, // Вологодская область
   'RU-KR': true, // Республика Карелия
+  'RU-CE': true, // Чеченская Республика
+  'RU-DA': true, // Республика Дагестан
   UA: true,
   'UA-30': true, // Киевская область
   'UA-32': true, // Киев
