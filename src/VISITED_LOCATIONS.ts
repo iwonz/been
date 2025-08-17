@@ -14,6 +14,24 @@ const VISITED_CITIES: Location[] = [
   },
   {
     type: LocationType.CITY,
+    name: 'Ессентуки',
+    coordinates: [44.048200, 42.856161],
+    actions: [],
+  },
+  {
+    type: LocationType.CITY,
+    name: 'Пятигорск',
+    coordinates: [44.039802, 43.070643],
+    actions: [],
+  },
+  {
+    type: LocationType.CITY,
+    name: 'Терскол',
+    coordinates: [44.039802, 43.070643],
+    actions: [],
+  },
+  {
+    type: LocationType.CITY,
     name: 'Анапа',
     coordinates: [44.894818, 37.316367],
 
@@ -374,7 +392,6 @@ const VISITED_CITIES: Location[] = [
     type: LocationType.CITY,
     name: 'Нижний Новгород',
     coordinates: [56.326797, 44.006516],
-
     actions: [
       {
         name: 'Бывал',
@@ -874,8 +891,7 @@ const VISITED_CITIES: Location[] = [
   {
     type: LocationType.CITY,
     name: 'Краснодар',
-    coordinates: [44.723771, 37.768813],
-
+    coordinates: [45.035470, 38.975313],
     actions: [
       {
         name: 'Мимо проезжал',
@@ -1516,6 +1532,12 @@ const VISITED_PLACES: Location[] = [
         url: 'https://vk.com/narrative-222060304_103521',
       },
     ],
+  },
+  {
+    type: LocationType.PLACE,
+    name: 'Гедуко',
+    coordinates: [43.664099, 43.663399],
+    actions: [],
   },
 ];
 

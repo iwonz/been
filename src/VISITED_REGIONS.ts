@@ -18,9 +18,9 @@ export const VISITED_REGIONS: Record<string, boolean> = {
   'RU-SEV': true, // Севастополь (UA-40)
   'RU-KDA': true, // Краснодарский край
   'RU-PER': true, // Пермский край
-  'RU-BEL': true, // Белгородская област
+  'RU-BEL': true, // Белгородская область
   'RU-VGG': true, // Волгоградская область
-  'RU-LEN': true, // Ленинградская област
+  'RU-LEN': true, // Ленинградская область
   'RU-MOS': true, // Московская область
   'RU-KGD': true, // Калининградская область
   'RU-MUR': true, // Мурманская область
@@ -32,6 +32,8 @@ export const VISITED_REGIONS: Record<string, boolean> = {
   'RU-KR': true, // Республика Карелия
   'RU-CE': true, // Чеченская Республика
   'RU-DA': true, // Республика Дагестан
+  'RU-STA': true, // Ставропольский край
+  'RU-KB': true, // Кабардино-Балкарская Республика
   UA: true,
   'UA-30': true, // Киевская область
   'UA-32': true, // Киев
