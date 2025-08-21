@@ -16,13 +16,23 @@ const VISITED_CITIES: Location[] = [
     type: LocationType.CITY,
     name: 'Ессентуки',
     coordinates: [44.048200, 42.856161],
-    actions: [],
+    actions: [
+      {
+        name: 'Пил из источника №4 и №17',
+        url: 'https://vk.com/narrative-222060304_103526',
+      },
+    ],
   },
   {
     type: LocationType.CITY,
     name: 'Пятигорск',
     coordinates: [44.039802, 43.070643],
-    actions: [],
+    actions: [
+      {
+        name: 'Гулял',
+        url: 'https://vk.com/narrative-222060304_103526',
+      },
+    ],
   },
   {
     type: LocationType.CITY,
@@ -912,6 +922,32 @@ const VISITED_CITIES: Location[] = [
 ];
 
 const VISITED_PLACES: Location[] = [
+    {
+    type: LocationType.PLACE,
+    name: 'Черекское ущелье',
+    coordinates: [43.190217, 43.518774],
+    actions: [
+      {
+        name: 'Гулял',
+        url: 'https://vk.com/narrative-222060304_103527',
+      },
+    ],
+  },
+  {
+    type: LocationType.PLACE,
+    name: 'Западная вершина Эльбруса',
+    coordinates: [43.352471, 42.437874],
+    actions: [
+      {
+        name: 'Восходил',
+        url: 'https://vk.com/w=wall-222060304_71',
+      },
+      {
+        name: 'Заносил камень с южного берега Крыма',
+        url: 'https://vk.com/narrative-222060304_103525',
+      },
+    ],
+  },
   {
     type: LocationType.PLACE,
     name: 'Парк Патриот',
