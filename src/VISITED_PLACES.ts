@@ -3,6 +3,61 @@ import { Location, LocationType } from './types';
 export const VISITED_PLACES: Location[] = [
   {
     type: LocationType.PLACE,
+    name: 'Муйне',
+    coordinates: [10.933258, 108.285035],
+    actions: [
+      {
+        name: 'Сюжет',
+        url: 'https://vk.com/narrative-222060304_103532',
+      },
+    ],
+  },
+  {
+    type: LocationType.PLACE,
+    name: 'Участок Китайской стены Мутяньюй',
+    coordinates: [40.440193, 116.559451],
+    actions: [
+      {
+        name: 'Сюжет',
+        url: 'https://vk.com/narrative-222060304_103536',
+      },
+    ],
+  },
+  {
+    type: LocationType.PLACE,
+    name: 'Shanghai Wild Animal Park',
+    coordinates: [31.052452, 121.694823],
+    actions: [
+      {
+        name: 'Сюжет',
+        url: 'https://vk.com/narrative-222060304_103538',
+      },
+    ],
+  },
+  {
+    type: LocationType.PLACE,
+    name: 'Hong Kong Disneyland',
+    coordinates: [22.311477, 114.045841],
+    actions: [
+      {
+        name: 'Сюжет',
+        url: 'https://vk.com/narrative-222060304_103540',
+      },
+    ],
+  },
+  {
+    type: LocationType.PLACE,
+    name: 'Большой Будда на острове Лантау',
+    coordinates: [22.253925, 113.905022],
+    actions: [
+      {
+        name: 'Сюжет',
+        url: 'https://vk.com/narrative-222060304_103541',
+      },
+    ],
+  },
+  {
+    type: LocationType.PLACE,
     name: 'Черекское ущелье',
     coordinates: [43.190217, 43.518774],
     actions: [

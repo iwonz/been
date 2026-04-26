@@ -3,6 +3,21 @@ import { Location, LocationType } from './types';
 export const VISITED_AIRPORTS: Location[] = [
   {
     type: LocationType.AIRPORT,
+    name: 'Пекин-Дасин',
+    coordinates: [39.509167, 116.410556],
+  },
+  {
+    type: LocationType.AIRPORT,
+    name: 'Гонконг',
+    coordinates: [22.308046, 113.91848],
+  },
+  {
+    type: LocationType.AIRPORT,
+    name: 'Санья Феникс',
+    coordinates: [18.3029, 109.412003],
+  },
+  {
+    type: LocationType.AIRPORT,
     name: 'Шереметьево',
     coordinates: [55.563343, 36.822529],
   },

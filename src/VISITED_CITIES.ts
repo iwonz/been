@@ -3,6 +3,39 @@ import { Location, LocationType } from './types';
 export const VISITED_CITIES: Location[] = [
   {
     type: LocationType.CITY,
+    name: 'Пекин',
+    coordinates: [39.90185, 116.391441],
+    actions: [
+      {
+        name: 'Сюжет',
+        url: 'https://vk.com/narrative-222060304_103535',
+      },
+    ],
+  },
+  {
+    type: LocationType.CITY,
+    name: 'Шанхай',
+    coordinates: [31.231311, 121.470058],
+    actions: [
+      {
+        name: 'Сюжет',
+        url: 'https://vk.com/narrative-222060304_103537',
+      },
+    ],
+  },
+  {
+    type: LocationType.CITY,
+    name: 'Гонконг',
+    coordinates: [22.280162, 114.165335],
+    actions: [
+      {
+        name: 'Сюжет',
+        url: 'https://vk.com/narrative-222060304_103539',
+      },
+    ],
+  },
+  {
+    type: LocationType.CITY,
     name: 'Сочи',
     coordinates: [43.585472, 39.723098],
     actions: [
