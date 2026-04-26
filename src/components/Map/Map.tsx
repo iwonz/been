@@ -6,6 +6,10 @@ import { isVisitedRegionOrCountry } from '../../utils/isVisitedRegionOrCountry';
 
 let map: any = null;
 
+const getRegionCountryIsoCode = (regionIsoCode: string) => {
+  return PLACES_CONFIG.isDisputedRussiaRegion(regionIsoCode) ? 'RU' : regionIsoCode.split('-')[0];
+};
+
 async function initializeMap() {
   if (map) {
     return;
@@ -56,7 +60,6 @@ async function initializeMap() {
   ]).then(([COUNTRIES_BORDERS, REGIONS_BORDERS]) => {
     // Render countries
     const countriesGeoObjectCollection = new ymaps.GeoObjectCollection();
-    const countriesGeoObjects: Record<string, typeof ymaps.GeoObject> = {};
     Object.keys(COUNTRIES_BORDERS).forEach((countryIsoKey) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -85,8 +88,6 @@ async function initializeMap() {
         });
       }
 
-      countriesGeoObjects[countryIsoKey] = countryGeoObject;
-
       countriesGeoObjectCollection.add(countryGeoObject);
     });
     map.geoObjects.add(countriesGeoObjectCollection);
@@ -94,14 +95,12 @@ async function initializeMap() {
 
     // Render regions
     const regionsGeoObjectCollection = new ymaps.GeoObjectCollection();
-    const regionsGeoObjects: Record<string, typeof ymaps.GeoObject> = {};
+    const regionsByCountry: Record<string, Array<typeof ymaps.GeoObject>> = {};
     Object.keys(REGIONS_BORDERS).forEach((regionIsoCode) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const region = REGIONS_BORDERS[regionIsoCode];
-      const countryIsoCode = PLACES_CONFIG.isDisputedRussiaRegion(regionIsoCode)
-        ? 'RU'
-        : regionIsoCode.split('-')[0];
+      const countryIsoCode = getRegionCountryIsoCode(regionIsoCode);
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -116,35 +115,20 @@ async function initializeMap() {
         strokeColor: '#db757f',
       });
 
-      regionsGeoObjects[regionIsoCode] = regionGeoObject;
+      regionsByCountry[countryIsoCode] ??= [];
+      regionsByCountry[countryIsoCode].push(regionGeoObject);
 
       regionGeoObject.events.add('mouseenter', () => {
-        Object.keys(REGIONS_BORDERS).forEach((regionIsoCode) => {
-          const isDisputedRegion = PLACES_CONFIG.isDisputedRussiaRegion(regionIsoCode);
-
-          const isHighlighted =
-            (isDisputedRegion && countryIsoCode === 'RU') ||
-            (regionIsoCode.startsWith(countryIsoCode) && !isDisputedRegion);
-
-          if (isHighlighted) {
-            regionsGeoObjects[regionIsoCode].options.set('strokeWidth', 0.3);
-          }
+        regionsByCountry[countryIsoCode].forEach((regionGeoObject) => {
+          regionGeoObject.options.set('strokeWidth', 0.3);
         });
 
         regionGeoObject.options.set('strokeWidth', 1);
       });
 
       regionGeoObject.events.add('mouseleave', () => {
-        Object.keys(REGIONS_BORDERS).forEach((regionIsoCode) => {
-          const isDisputedRegion = PLACES_CONFIG.isDisputedRussiaRegion(regionIsoCode);
-
-          const isHighlighted =
-            (isDisputedRegion && countryIsoCode === 'RU') ||
-            (regionIsoCode.startsWith(countryIsoCode) && !isDisputedRegion);
-
-          if (isHighlighted) {
-            regionsGeoObjects[regionIsoCode].options.set('strokeWidth', 0);
-          }
+        regionsByCountry[countryIsoCode].forEach((regionGeoObject) => {
+          regionGeoObject.options.set('strokeWidth', 0);
         });
 
         regionGeoObject.options.set('strokeWidth', 0);

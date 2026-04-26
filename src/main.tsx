@@ -6,9 +6,9 @@ import { downloadBorders } from './utils/downloadBorders';
 import { addScript } from './utils/addScript';
 import { PLACES_CONFIG } from './config';
 
-addScript(`https://api-maps.yandex.ru/2.1/?lang=${PLACES_CONFIG.mapLang}`, '', () => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+async function bootstrap() {
+  await addScript(`https://api-maps.yandex.ru/2.1/?lang=${PLACES_CONFIG.mapLang}`);
+
   window.downloadBorders = downloadBorders;
 
   ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -16,4 +16,6 @@ addScript(`https://api-maps.yandex.ru/2.1/?lang=${PLACES_CONFIG.mapLang}`, '', (
       <Map />
     </React.StrictMode>,
   );
-});
+}
+
+bootstrap();

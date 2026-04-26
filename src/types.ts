@@ -1,7 +1,7 @@
 export enum LocationType {
   CITY,
   PLACE,
-  AIPORT,
+  AIRPORT,
   JUMP,
   CAFE,
 }
