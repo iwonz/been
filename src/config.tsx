@@ -5,10 +5,10 @@ import { VISITED_REGIONS } from './VISITED_REGIONS';
 
 type PlacesConfig = {
   lang: string;
-  mapLang: string;
   notVisitedRegionFillColor: string;
   visitedRegionFillColor: string;
   countriesWithRegions: string[];
+  regionCountryNames: Record<string, string>;
 
   isCountryWithRegions: (countryIsoKey: string) => boolean;
 
@@ -25,10 +25,10 @@ type PlacesConfig = {
 
 export const PLACES_CONFIG: PlacesConfig = {
   lang: 'ru',
-  mapLang: 'ru_RU',
   notVisitedRegionFillColor: '#e2e2e2',
   visitedRegionFillColor: '#80ff80',
   countriesWithRegions: ['RU', 'BY', 'UA'],
+  regionCountryNames: { RU: 'Россия', BY: 'Беларусь', UA: 'Украина' },
   isCountryWithRegions: (countryIsoKey: string) =>
     PLACES_CONFIG.countriesWithRegions.includes(countryIsoKey),
   isDisputedRussiaRegion: (isoKey: string) =>

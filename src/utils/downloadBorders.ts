@@ -3,8 +3,8 @@ import type { Border, Borders } from '../types';
 import { download } from './download';
 import { roundBorderCoordinates } from './roundBorderCoordinates';
 
-const downloadCountriesJson = async () => {
-  const result: { features: Border[] } = await ymaps.borders.load('001', {
+const downloadCountriesJson = async (borders: typeof ymaps.borders) => {
+  const result: { features: Border[] } = await borders.load('001', {
     lang: PLACES_CONFIG.lang,
     quality: 3,
   });
@@ -18,10 +18,10 @@ const downloadCountriesJson = async () => {
   download(JSON.stringify(roundBorderCoordinates(countries)), 'countries.json');
 };
 
-const downloadRegionsJson = async () => {
+const downloadRegionsJson = async (borders: typeof ymaps.borders) => {
   const results: { features: Border[] }[] = await Promise.all(
     PLACES_CONFIG.countriesWithRegions.map((region) => {
-      return ymaps.borders.load(region, {
+      return borders.load(region, {
         lang: PLACES_CONFIG.lang,
         quality: 3,
       });
@@ -40,6 +40,7 @@ const downloadRegionsJson = async () => {
 };
 
 export const downloadBorders = async () => {
-  await downloadCountriesJson();
-  await downloadRegionsJson();
+  const [borders] = await ymaps.modules.require(['borders']);
+  await downloadCountriesJson(borders);
+  await downloadRegionsJson(borders);
 };
