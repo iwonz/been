@@ -272,11 +272,6 @@ export const VISITED_PLACES: Location[] = [
   },
   {
     type: LocationType.PLACE,
-    name: 'Кафе "Телеграф"',
-    coordinates: [61.789063, 34.367667],
-  },
-  {
-    type: LocationType.PLACE,
     name: 'Vuorio Forest',
     coordinates: [61.66781, 30.6563],
   },
@@ -284,16 +279,6 @@ export const VISITED_PLACES: Location[] = [
     type: LocationType.PLACE,
     name: 'Отель "Точка на карте"',
     coordinates: [61.041992, 30.178778],
-  },
-  {
-    type: LocationType.PLACE,
-    name: 'Кафе "Карельская Горница"',
-    coordinates: [61.788212, 34.360955],
-  },
-  {
-    type: LocationType.PLACE,
-    name: 'Кофейня "Любовь и Люди"',
-    coordinates: [61.702376, 30.691316],
   },
   {
     type: LocationType.PLACE,

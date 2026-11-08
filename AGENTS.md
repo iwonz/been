@@ -67,7 +67,7 @@
 На карте отображаются:
 
 - посещенные страны и отдельные регионы стран;
-- маркеры городов, мест, кафе, прыжков и аэропортов;
+- маркеры городов, мест, аэропортов и прыжков с верёвкой;
 - балуны маркеров со ссылками на связанные посты или истории;
 - небольшой блок статистики: страны, населенные пункты, регионы России и аэропорты.
 
@@ -92,7 +92,7 @@ React здесь отвечает только за контейнер карт�
 - `src/components/Map/Map.module.css` - полноэкранная раскладка карты и стили панели статистики.
 - `src/config.tsx` - настройки приложения: язык, состояние и опции карты, цвета, страны с детализацией по регионам, особая обработка регионов, статистика, иконки маркеров и содержимое балунов.
 - `src/VISITED_LOCATIONS.ts` - единый агрегирующий экспорт `VISITED_LOCATIONS`; импортирует списки из соседних `VISITED_*` файлов.
-- `src/VISITED_CITIES.ts`, `src/VISITED_PLACES.ts`, `src/VISITED_AIRPORTS.ts`, `src/VISITED_JUMPS.ts`, `src/VISITED_CAFES.ts` - исходные данные для маркеров, разнесенные по типам.
+- `src/VISITED_CITIES.ts`, `src/VISITED_PLACES.ts`, `src/VISITED_AIRPORTS.ts`, `src/VISITED_JUMPS.ts` - исходные данные для маркеров, разнесенные по типам: города, места, аэропорты и прыжки с верёвкой.
 - `src/VISITED_REGIONS.ts` - посещенные страны и регионы в виде объекта с ключами ISO-like кодов из данных Yandex Maps.
 - `src/types.ts` - общие типы локаций и иконок.
 - `src/utils/addScript.ts` - добавляет внешний `script` в документ и возвращает `Promise<HTMLScriptElement>`.
@@ -107,7 +107,7 @@ React здесь отвечает только за контейнер карт�
 
 ### Локации
 
-Файлы `src/VISITED_CITIES.ts`, `src/VISITED_PLACES.ts`, `src/VISITED_AIRPORTS.ts`, `src/VISITED_JUMPS.ts` и `src/VISITED_CAFES.ts` содержат объекты такого вида:
+Файлы `src/VISITED_CITIES.ts`, `src/VISITED_PLACES.ts`, `src/VISITED_AIRPORTS.ts` и `src/VISITED_JUMPS.ts` содержат объекты такого вида:
 
 ```ts
 {

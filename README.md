@@ -2,7 +2,7 @@
 
 Интерактивная карта поездок на Vite + React + TypeScript с использованием Yandex Maps JavaScript API.
 
-Проект показывает посещенные страны, регионы и точки на карте: города, места, кафе, прыжки и аэропорты. Для некоторых точек есть балуны со ссылками на связанные посты или истории.
+Проект показывает посещенные страны, регионы и точки на карте: города, места, аэропорты и прыжки с верёвкой. Для некоторых точек есть балуны со ссылками на связанные посты или истории.
 
 ## Стек
 
@@ -116,7 +116,7 @@ yarn verify
 - `src/components/Map/Map.tsx` - основная логика карты: создание карты, маркеры, страны, регионы и hover-подсветка.
 - `src/config.tsx` - настройки карты, цвета, статистика, иконки и содержимое балунов.
 - `src/VISITED_LOCATIONS.ts` - единый агрегирующий экспорт `VISITED_LOCATIONS`.
-- `src/VISITED_CITIES.ts`, `src/VISITED_PLACES.ts`, `src/VISITED_AIRPORTS.ts`, `src/VISITED_JUMPS.ts`, `src/VISITED_CAFES.ts` - отдельные списки точек по типам.
+- `src/VISITED_CITIES.ts`, `src/VISITED_PLACES.ts`, `src/VISITED_AIRPORTS.ts`, `src/VISITED_JUMPS.ts` - отдельные списки точек по типам.
 - `src/VISITED_REGIONS.ts` - список посещенных стран и регионов.
 - `src/types.ts` - общие типы данных.
 - `biome.json` - правила lint, форматирования и импортов; большие JSON границ исключены из обработки.
@@ -135,8 +135,7 @@ yarn verify
 - `VISITED_CITIES.ts` - города.
 - `VISITED_PLACES.ts` - места.
 - `VISITED_AIRPORTS.ts` - аэропорты.
-- `VISITED_JUMPS.ts` - прыжки.
-- `VISITED_CAFES.ts` - кафе.
+- `VISITED_JUMPS.ts` - прыжки с верёвкой.
 
 `src/VISITED_LOCATIONS.ts` оставляет единый экспорт для приложения и обычно не требует правок, если не появляется новый тип списка.
 

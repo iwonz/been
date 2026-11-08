@@ -3,7 +3,6 @@ export enum LocationType {
   PLACE,
   AIRPORT,
   JUMP,
-  CAFE,
 }
 
 export interface Location {
