@@ -1,7 +1,7 @@
 import { PLACES_CONFIG } from '../config';
 import { download } from './download';
 
-export const downloadCountriesJson = async () => {
+const downloadCountriesJson = async () => {
   let countries = await ymaps.borders.load('001', {
     lang: PLACES_CONFIG.lang,
     quality: 3,
@@ -16,7 +16,7 @@ export const downloadCountriesJson = async () => {
   download(JSON.stringify(countries), 'countries.json');
 };
 
-export const downloadRegionsJson = async () => {
+const downloadRegionsJson = async () => {
   let regions = await Promise.all(
     PLACES_CONFIG.countriesWithRegions.map((region) => {
       return ymaps.borders.load(region, {

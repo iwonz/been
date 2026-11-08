@@ -1,4 +1,4 @@
-import { Location, LocationType } from './types';
+import { type Location, LocationType } from './types';
 
 export const VISITED_PLACES: Location[] = [
   {

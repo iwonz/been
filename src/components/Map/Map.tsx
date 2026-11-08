@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { VISITED_LOCATIONS } from '../../VISITED_LOCATIONS';
-import styles from './Map.module.css';
 import { PLACES_CONFIG } from '../../config';
 import { isVisitedRegionOrCountry } from '../../utils/isVisitedRegionOrCountry';
+import { VISITED_LOCATIONS } from '../../VISITED_LOCATIONS';
+import styles from './Map.module.css';
 
 let map: any = null;
 
@@ -61,8 +61,6 @@ async function initializeMap() {
     // Render countries
     const countriesGeoObjectCollection = new ymaps.GeoObjectCollection();
     Object.keys(COUNTRIES_BORDERS).forEach((countryIsoKey) => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       const country = COUNTRIES_BORDERS[countryIsoKey];
       const isWithRegions = PLACES_CONFIG.isCountryWithRegions(countryIsoKey);
 
@@ -97,13 +95,9 @@ async function initializeMap() {
     const regionsGeoObjectCollection = new ymaps.GeoObjectCollection();
     const regionsByCountry: Record<string, Array<typeof ymaps.GeoObject>> = {};
     Object.keys(REGIONS_BORDERS).forEach((regionIsoCode) => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       const region = REGIONS_BORDERS[regionIsoCode];
       const countryIsoCode = getRegionCountryIsoCode(regionIsoCode);
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       region.properties.hintContent = `${COUNTRIES_BORDERS[countryIsoCode].properties.name}, ${region.properties.name}`;
 
       const regionGeoObject = new ymaps.GeoObject(region, {
@@ -141,7 +135,7 @@ async function initializeMap() {
   });
 }
 
-export const Map = () => {
+export const TravelMap = () => {
   useEffect(() => {
     ymaps.ready(() => {
       initializeMap();

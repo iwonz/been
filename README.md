@@ -11,13 +11,16 @@
 - TypeScript
 - Yandex Maps JavaScript API
 - Yarn Classic
+- Biome и Knip
 
 ## Запуск
+
+Для разработки нужен Node.js 22.12.0 или новее; в `.nvmrc` выбрана ветка Node.js 24. Используется Yarn Classic 1.22.22.
 
 Установить зависимости:
 
 ```sh
-yarn
+yarn install --frozen-lockfile
 ```
 
 Запустить dev server:
@@ -43,8 +46,12 @@ yarn preview
 - `yarn dev` - локальная разработка.
 - `yarn build` - TypeScript build и Vite production build.
 - `yarn preview` - preview production-сборки.
-- `yarn lint` - ESLint с `--fix`, команда может менять файлы.
-- `yarn format` - форматирование Prettier.
+- `yarn lint` - проверка Biome: lint, форматирование и импорты, без изменения файлов.
+- `yarn lint:fix` - безопасные автоматические исправления Biome.
+- `yarn format` - форматирование Biome с записью файлов.
+- `yarn knip` - поиск неиспользуемых файлов, экспортов и зависимостей.
+- `yarn verify` - Biome, Knip и production-сборка; обязательная локальная проверка перед слиянием.
+- `yarn audit` - проверка известных уязвимостей всех зависимостей; требует доступ к сети.
 - `yarn deploy` - сборка и публикация `dist` в GitHub Pages.
 
 ## Работа с агентами через OpenSpec
@@ -83,7 +90,7 @@ $openspec-archive-change add-location-filters
 openspec list
 openspec list --specs
 openspec validate --all --strict --no-interactive
-yarn build
+yarn verify
 ```
 
 Новые возможности и изменения поведения проходят через OpenSpec. Опечатки, небольшие правки документации, новые точки по существующей модели и исправления до уже описанного поведения не требуют отдельного change, если пользователь не попросил его явно. Исходные спецификации составлены по текущему коду; они не означают, что все сценарии покрыты автотестами.
@@ -97,7 +104,7 @@ yarn build
 1. Проверить чистоту дерева, перейти на `main` и обновить ее через `git fetch origin` и `git merge --ff-only origin/main`.
 2. Создать рабочую ветку `<type>/<short-kebab-case>`, например `feat/location-filters` или `fix/map-initialization`.
 3. Выполнить доработку, сразу проверяя каждую логическую часть и создавая осмысленные [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), например `fix(map): prevent duplicate initialization`.
-4. Получить успешные результаты `yarn build`, `openspec validate --all --strict --no-interactive`, `git diff --check` и проверок затронутого поведения. При наличии OpenSpec change синхронизировать спецификации, архивировать change и закоммитить артефакты.
+4. Получить успешные результаты `yarn verify`, `openspec validate --all --strict --no-interactive`, `git diff --check` и проверок затронутого поведения. При обновлении зависимостей также выполнить `yarn audit`. При наличии OpenSpec change синхронизировать спецификации, архивировать change и закоммитить артефакты.
 5. Слить проверенную ветку в актуальную `main` через `git merge --ff-only <work-branch>`. Если `main` продвинулась, сначала объединить изменения в рабочей ветке и проверить результат.
 6. Повторить проверки на `main`, удалить слитую рабочую ветку и убедиться, что `git status --porcelain=v1` пуст.
 
@@ -112,6 +119,7 @@ yarn build
 - `src/VISITED_CITIES.ts`, `src/VISITED_PLACES.ts`, `src/VISITED_AIRPORTS.ts`, `src/VISITED_JUMPS.ts`, `src/VISITED_CAFES.ts` - отдельные списки точек по типам.
 - `src/VISITED_REGIONS.ts` - список посещенных стран и регионов.
 - `src/types.ts` - общие типы данных.
+- `biome.json` - правила lint, форматирования и импортов; большие JSON границ исключены из обработки.
 - `src/utils/downloadBorders.ts` - браузерные хелперы для скачивания свежих JSON с границами.
 - `public/countries.json` - границы стран.
 - `public/regions.json` - границы регионов для стран с детализацией.

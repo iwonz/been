@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
-import { Location, LocationIcon, LocationType } from './types';
-import { VISITED_REGIONS } from './VISITED_REGIONS';
+import type { ReactNode } from 'react';
+import { type Location, type LocationIcon, LocationType } from './types';
 import { VISITED_LOCATIONS } from './VISITED_LOCATIONS';
+import { VISITED_REGIONS } from './VISITED_REGIONS';
 
 type PlacesConfig = {
   lang: string;
@@ -114,18 +114,18 @@ export const PLACES_CONFIG: PlacesConfig = {
   },
 };
 
-export const VISITED_COUNTRIES_COUNT = Object.keys(VISITED_REGIONS).filter(
+const VISITED_COUNTRIES_COUNT = Object.keys(VISITED_REGIONS).filter(
   (isoKey) => !isoKey.includes('-'),
 ).length;
 
-export const VISITED_RUSSIA_REGIONS_COUNT = Object.keys(VISITED_REGIONS).filter(
+const VISITED_RUSSIA_REGIONS_COUNT = Object.keys(VISITED_REGIONS).filter(
   (isoKey) => isoKey.startsWith('RU-') || PLACES_CONFIG.isDisputedRussiaRegion(isoKey),
 ).length;
 
-export const VISITED_CITIES_COUNT = VISITED_LOCATIONS.filter(
+const VISITED_CITIES_COUNT = VISITED_LOCATIONS.filter(
   (location) => location.type === LocationType.CITY,
 ).length;
 
-export const VISITED_AIRPORTS_COUNT = VISITED_LOCATIONS.filter(
+const VISITED_AIRPORTS_COUNT = VISITED_LOCATIONS.filter(
   (location) => location.type === LocationType.AIRPORT,
 ).length;
