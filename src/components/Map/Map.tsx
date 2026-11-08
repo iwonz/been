@@ -63,6 +63,8 @@ async function initializeMap() {
     country.properties.hintContent = isWithRegions ? null : country.properties.name;
 
     const countryGeoObject = new ymaps.GeoObject(country, {
+      // A transparent country still intercepts pointer events when it loads after its regions.
+      visible: !isWithRegions,
       fillOpacity: isWithRegions ? 0 : 0.5,
       fillColor: isVisitedRegionOrCountry(countryIsoKey)
         ? PLACES_CONFIG.visitedRegionFillColor
