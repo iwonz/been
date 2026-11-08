@@ -47,6 +47,49 @@ yarn preview
 - `yarn format` - форматирование Prettier.
 - `yarn deploy` - сборка и публикация `dist` в GitHub Pages.
 
+## Работа с агентами через OpenSpec
+
+Репозиторий настроен на [OpenSpec](https://github.com/Fission-AI/OpenSpec) со схемой `spec-driven` и навыками для Codex. Инструкции для всех агентов находятся в [AGENTS.md](AGENTS.md), контекст и правила создания артефактов — в [openspec/config.yaml](openspec/config.yaml).
+
+Для CLI нужен Node.js 20.19.0 или новее. Использованная при настройке версия OpenSpec — 1.11.0. На новой машине установить ее отдельно от зависимостей приложения:
+
+```sh
+npm install -g @fission-ai/openspec@1.11.0
+openspec --version
+```
+
+Навыки уже находятся в репозитории, поэтому после клонирования повторный `init` не нужен. Открыть новую сессию агента, чтобы он обнаружил их.
+
+Пример работы в чате Codex (это сообщения агенту, не команды терминала):
+
+```text
+$openspec-propose add-location-filters: добавить фильтры маркеров по типу
+$openspec-apply-change add-location-filters
+$openspec-archive-change add-location-filters
+```
+
+`propose` готовит описание изменения, требования, задачи и при необходимости техническое решение. После просмотра артефактов `apply-change` выполняет задачи. После проверок `archive-change` синхронизирует основные спецификации и переносит изменение в архив. Для исследования есть `$openspec-explore`, для корректировки плана — `$openspec-update-change`, для отдельной синхронизации реализованных требований — `$openspec-sync-specs`. Можно также описать задачу обычным текстом и попросить выполнить ее через OpenSpec.
+
+Структура:
+
+- `openspec/specs/` — спецификации текущего поведения: [карта](openspec/specs/travel-map/spec.md), [маркеры](openspec/specs/location-markers/spec.md), [статистика](openspec/specs/travel-statistics/spec.md).
+- `openspec/changes/<change-name>/` — предложение, delta-спецификации, решение и задачи одного изменения.
+- `openspec/changes/archive/` — завершенные изменения.
+- `.agents/skills/` — сгенерированные навыки OpenSpec для Codex.
+
+В терминале из корня репозитория:
+
+```sh
+openspec list
+openspec list --specs
+openspec validate --all --strict --no-interactive
+yarn build
+```
+
+Новые возможности и изменения поведения проходят через OpenSpec. Опечатки, небольшие правки документации, новые точки по существующей модели и исправления до уже описанного поведения не требуют отдельного change, если пользователь не попросил его явно. Исходные спецификации составлены по текущему коду; они не означают, что все сценарии покрыты автотестами.
+
+Для повторной генерации того же набора навыков выполнить `openspec init --tools codex --profile core`. При обновлении версии CLI повторно сгенерировать навыки и проверить diff. Проектные правила хранить в `AGENTS.md` и `openspec/config.yaml`.
+
 ## Структура проекта
 
 - `src/main.tsx` - загружает Yandex Maps API и запускает React-приложение.
