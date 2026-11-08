@@ -7,7 +7,9 @@ import { addScript } from './utils/addScript';
 import { downloadBorders } from './utils/downloadBorders';
 
 async function bootstrap() {
-  await addScript(`https://api-maps.yandex.ru/2.1/?lang=${PLACES_CONFIG.mapLang}`);
+  await addScript(
+    `https://api-maps.yandex.ru/2.1/?apikey=7f1d94ed-403e-46a8-8c29-7433e558dc74&lang=${PLACES_CONFIG.mapLang}`,
+  );
 
   window.downloadBorders = downloadBorders;
 
