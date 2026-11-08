@@ -3,6 +3,11 @@ import { type Location, LocationType } from './types';
 export const VISITED_CITIES: Location[] = [
   {
     type: LocationType.CITY,
+    name: 'Куала-Лумпур',
+    coordinates: [3.1412, 101.68653],
+  },
+  {
+    type: LocationType.CITY,
     name: 'Пекин',
     coordinates: [39.90185, 116.391441],
     actions: [

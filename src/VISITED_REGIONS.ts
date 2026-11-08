@@ -53,4 +53,5 @@ export const VISITED_REGIONS: Record<string, boolean> = {
   CN: true,
   HK: true,
   VN: true,
+  MY: true,
 };
