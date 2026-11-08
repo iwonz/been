@@ -20,3 +20,19 @@ export interface LocationIcon {
   size: [number, number];
   offset: [number, number];
 }
+
+export interface Border {
+  type: 'Feature';
+  geometry: {
+    type: 'Polygon';
+    coordinates: [number, number][][];
+  };
+  properties: {
+    iso3166: string;
+    name: string;
+    hintContent?: string | null;
+    [key: string]: unknown;
+  };
+}
+
+export type Borders = Record<string, Border>;
